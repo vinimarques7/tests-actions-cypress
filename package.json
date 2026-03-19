@@ -1,0 +1,11 @@
+{
+  "name": "tests-actions-cypress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vinimarques7/tests-actions-cypress.git",
+  "author": "vinimarques7 <vini.marques_07@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
