@@ -4,6 +4,8 @@ on:
     push:
         branches:
             - main
+        tags:
+          - 'v*'
     pull_request:
             branches:
                 - main
@@ -22,6 +24,12 @@ jobs:
                 registry: ghcr.io
                 username: ${{ secrets.GHCR_USERNAME }}
                 password: ${{ secrets.GHCR_TOKEN}}
+
+            - name: Extract metadata
+              id: meta
+              uses: docker/metadata-action@v5
+              with:
+                images: ghcr.io/${{ secrets.GHCR_USERNAME }}/monitor-app  
             
 
             - name: Build and push
@@ -30,3 +38,4 @@ jobs:
                 context: .
                 push: true
                 tags: ghcr.io/${{ secrets.GHCR_USERNAME }}/monitor-app:latest
+                labels: ${{ steps.meta.outputs.labels }}
