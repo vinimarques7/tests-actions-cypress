@@ -10,17 +10,18 @@
 
 Este repositório não é apenas um projeto técnico — é uma **jornada documentada em código**. Cada arquivo, pipeline e configuração representa um conceito aprendido e aplicado na prática, partindo do absoluto zero em automação até a construção de uma aplicação monitorada, containerizada e com deploy automatizado.
 
-O projeto nasceu de um desafio proposto pelo tech lead: **migrar pipelines de testes legados de Python para TypeScript e depois substituí-los pelo Cypress**. A partir disso, o repositório evoluiu naturalmente para cobrir o ciclo completo de CI/CD.
+O projeto nasceu de um desafio proposto pelo senior: **migrar pipelines de testes legados de Python para TypeScript e depois substituí-los pelo Cypress**. A partir disso, o repositório evoluiu naturalmente para cobrir o ciclo completo de CI/CD.
 
 ### 🧠 Metodologia: IA Mentoring
 
 Este projeto foi guiado pela técnica de **IA Mentoring**. Utilizei o [Claude.AI](https://claude.ai) para simular um ambiente de mentoria real de estágio, com foco em **80% de prática e 20% de teoria**.
 
-A diferença desta abordagem para simplesmente pedir código à IA está em três pilares:
+A diferença desta abordagem para simplesmente pedir código à IA está em quatro pilares:
 
-1. **Decomposição antes da execução** — antes de escrever qualquer linha, eu descrevia o que esperava que o código fizesse. A IA validava meu raciocínio antes de avançarmos.
-2. **Tradução de contexto** — aprendi a lógica em Python e imediatamente transpus esse conhecimento para TypeScript, provando que DevOps é agnóstico de linguagem.
-3. **Validação contínua** — a cada `git push`, eu sabia exatamente o que o pipeline faria e por quê. Não havia magia, só entendimento.
+1. **Decomposição antes da execução** — Antes de codificar, eu descrevia a lógica esperada para a IA. O objetivo era validar o raciocínio arquitetural antes de avançar para a implementação sintática.
+2. **Assimilação de Padrões** — Foco no entendimento de padrões de algoritmos e ferramentas (design patterns e workflows). O estudo foi binário: teoria para compreender o "porquê" e prática para dominar o "como".
+3. **Inversão de Fluxo (Explicação do Estudante)** — Ao receber um código ou conceito, eu obrigatoriamente devolvia uma explicação com minhas próprias palavras. A IA atuava como mentora, corrigindo desvios conceituais e confirmando meus acertos antes de eu transcrever o código para o VS Code.
+4. **Previsibilidade e Validação Contínua** — A cada git push, eu detinha o controle total sobre o comportamento do pipeline. Não havia "magia" no CI/CD; havia o entendimento claro de cada trigger, job e step configurado. Sempre verificando o Actions para verificar o retorno do pipeline.
 
 > **A filosofia deste repositório é simples: aprender fazendo. Cada erro resolvido, cada pipeline passando no GitHub Actions e cada conceito entendido está registrado na história de commits.**
 
