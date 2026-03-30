@@ -1,158 +1,156 @@
-# 🚀 DevOps Journey: Full Cycle CI/CD com IA Mentoring
+# 🚀 DevOps Journey: Full Cycle CI/CD with AI Mentoring
 
-> **Autor:** Vinícius Marques  
-> **Repositório:** `tests-actions-cypress`  
-> **Objetivo:** Registro técnico e evolutivo de uma jornada do zero ao CI/CD completo, utilizando IA como mentor de aprendizado.
-
----
-
-## 📖 Sobre este repositório
-
-Este repositório não é apenas um projeto técnico — é uma **jornada documentada em código**. Cada arquivo, pipeline e configuração representa um conceito aprendido e aplicado na prática, partindo do absoluto zero em automação até a construção de uma aplicação monitorada, containerizada e com deploy automatizado.
-
-O projeto nasceu de um desafio proposto pelo senior: **migrar pipelines de testes legados de Python para TypeScript e depois substituí-los pelo Cypress**. A partir disso, o repositório evoluiu naturalmente para cobrir o ciclo completo de CI/CD.
-
-### 🧠 Metodologia: IA Mentoring
-
-Este projeto foi guiado pela técnica de **IA Mentoring**. Utilizei o [Claude.AI](https://claude.ai) para simular um ambiente de mentoria real de estágio, com foco em **80% de prática e 20% de teoria**.
-
-A diferença desta abordagem para simplesmente pedir código à IA está em quatro pilares:
-
-1. **Decomposição antes da execução** — Antes de codificar, eu descrevia a lógica esperada para a IA. O objetivo era validar o raciocínio arquitetural antes de avançar para a implementação sintática.
-2. **Assimilação de Padrões** — Foco no entendimento de padrões de algoritmos e ferramentas (design patterns e workflows). O estudo foi binário: teoria para compreender o "porquê" e prática para dominar o "como".
-3. **Inversão de Fluxo (Explicação do Estudante)** — Ao receber um código ou conceito, eu obrigatoriamente devolvia uma explicação com minhas próprias palavras. A IA atuava como mentora, corrigindo desvios conceituais e confirmando meus acertos antes de eu transcrever o código para o VS Code.
-4. **Previsibilidade e Validação Contínua** — A cada git push, eu detinha o controle total sobre o comportamento do pipeline. Não havia "magia" no CI/CD; havia o entendimento claro de cada trigger, job e step configurado. Sempre verificando o Actions para verificar o retorno do pipeline.
-
-> **A filosofia deste repositório é simples: aprender fazendo. Cada erro resolvido, cada pipeline passando no GitHub Actions e cada conceito entendido está registrado na história de commits.**
+> **Author:** Vinícius Marques
+> **Repository:** `tests-actions-cypress`
+> **Goal:** Technical and evolutionary record of a journey from zero to full CI/CD, using AI as a learning mentor.
 
 ---
 
-## 📚 Pré-requisitos de Aprendizado
+## 📖 About this repository
 
-Antes de seguir este tutorial, recomendo fortemente completar estes cursos interativos gratuitos do GitHub Skills — eles fornecem a base necessária para entender o que será feito aqui:
+This repository is not just a technical project — it is a **journey documented in code**. Every file, pipeline, and configuration represents a concept learned and applied in practice, starting from absolute zero in automation and evolving into a monitored, containerized application with automated deployment.
 
-- 👉 [Hello GitHub Actions](https://github.com/skills/hello-github-actions) — introdução à estrutura de workflows
-- 👉 [Test with Actions](https://github.com/skills/test-with-actions) — como rodar testes automatizados no CI
+The project was born from a challenge proposed by the tech lead: **migrate legacy test pipelines from Python to TypeScript and then replace them with Cypress**. From there, the repository naturally evolved to cover the complete CI/CD cycle.
 
-Cada curso leva entre 20 e 40 minutos e você aprende diretamente em um repositório real.
+### 🧠 Methodology: AI Mentoring
+
+This project was guided by the **AI Mentoring** technique. I used [Claude.AI](https://claude.ai) to simulate a real internship mentoring environment, focusing on **80% practice and 20% theory**.
+
+The difference between this approach and simply asking an AI for code lies in four pillars:
+
+1. **Decomposition before execution** — Before writing any code, I described the expected logic to the AI. The goal was to validate architectural reasoning before moving on to syntactic implementation.
+2. **Pattern Assimilation** — Focus on understanding patterns of algorithms and tools (design patterns and workflows). The study was binary: theory to understand the "why" and practice to master the "how".
+3. **Flow Inversion (Student Explanation)** — Upon receiving code or a concept, I would always return an explanation in my own words. The AI acted as a mentor, correcting conceptual deviations and confirming my understanding before I transcribed the code into VS Code.
+4. **Predictability and Continuous Validation** — At every `git push`, I had full control over the pipeline's behavior. There was no "magic" in CI/CD — just a clear understanding of each configured trigger, job, and step. Always checking the Actions tab to verify the pipeline result.
+
+> **The philosophy of this repository is simple: learn by doing. Every resolved error, every pipeline passing on GitHub Actions, and every concept understood is recorded in the commit history.**
 
 ---
 
-## 🛠️ Stack Tecnológica
+## 📚 Learning Prerequisites
 
-| Tecnologia | Papel no Fluxo | Por que foi escolhida |
+Before following this tutorial, I strongly recommend completing these free interactive courses from GitHub Skills — they provide the necessary foundation to understand what will be done here:
+
+- 👉 [Hello GitHub Actions](https://github.com/skills/hello-github-actions) — introduction to workflow structure
+- 👉 [Test with Actions](https://github.com/skills/test-with-actions) — how to run automated tests in CI
+
+Each course takes between 20 and 40 minutes and you learn directly in a real repository.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Role in the Flow | Why it was chosen |
 |---|---|---|
-| **WSL 2 (Ubuntu)** | Sistema Operacional | O Windows é o escritório; o Linux é a fábrica. O WSL 2 roda um Kernel Linux nativo, garantindo paridade total com o servidor de produção e eliminando o erro "funciona na minha máquina". |
-| **Node.js & Yarn** | Runtime & Gestão de Pacotes | Node executa TypeScript no servidor. Yarn é mais rápido e determinístico que npm para gerenciar dependências. |
-| **TypeScript** | Linguagem | Adiciona tipagem estática ao JavaScript. No desafio da função `soma.ts`, o TypeScript impede erros de lógica antes mesmo da execução — somar uma string com um número é impossível. |
-| **Python & pytest** | Ponto de Partida (Legado) | A fase inicial do desafio. Aprender CI em Python primeiro prova que a lógica de automação é agnóstica de linguagem. |
-| **Docker Engine** | Containerização | Isolamos o `monitor-app` em um container. Se o servidor destino tiver Docker, ele não precisa de Node ou Yarn instalado — o container transporta todas as dependências e o SO mínimo. |
-| **GitHub Actions** | Orquestração CI/CD | Nossa "esteira de montagem". Automatiza o ciclo completo: Push → Teste → Build → Publicação de Imagem → Deploy. |
-| **Cypress** | Testes E2E | Diferente do teste unitário, o Cypress simula a jornada real do usuário. É a última linha de defesa antes da produção. |
-| **GHCR** | Registry de Imagens | O "almoxarifado" de imagens Docker. Integrado ao GitHub, usa o mesmo token de autenticação e fica no mesmo lugar que o código. |
-| **Railway** | Deploy em Nuvem | Plataforma PaaS que gerencia toda a infraestrutura. Você entrega a imagem e ele cuida do resto. Ideal para aprendizado. |
+| **WSL 2 (Ubuntu)** | Operating System | Windows is the office; Linux is the factory. WSL 2 runs a native Linux Kernel, ensuring full parity with the production server and eliminating the "works on my machine" error. |
+| **Node.js & Yarn** | Runtime & Package Manager | Node runs TypeScript on the server. Yarn is faster and more deterministic than npm for managing dependencies. |
+| **TypeScript** | Language | Adds static typing to JavaScript. In the `soma.ts` function challenge, TypeScript prevents logic errors before execution — summing a string with a number is impossible. |
+| **Python & pytest** | Starting Point (Legacy) | The initial phase of the challenge. Learning CI in Python first proves that automation logic is language-agnostic. |
+| **Docker Engine** | Containerization | We isolated the `monitor-app` in a container. If the target server has Docker, it doesn't need Node or Yarn installed — the container transports all dependencies and the minimal OS. |
+| **GitHub Actions** | CI/CD Orchestration | Our "assembly line". Automates the full cycle: Push → Test → Build → Image Publish → Deploy. |
+| **Cypress** | E2E Testing | Unlike unit tests, Cypress simulates the real user journey. It is the last line of defense before production. |
+| **GHCR** | Image Registry | The Docker image "warehouse". Integrated with GitHub, it uses the same authentication token and lives in the same place as the code. |
+| **Railway** | Cloud Deploy | PaaS platform that manages all infrastructure. You deliver the image and it takes care of the rest. Ideal for learning. |
 
 ---
 
-## 📂 Estrutura de Pastas
+## 📂 Folder Structure
 
 ```
 .
 ├── .github/
-│   └── workflows/              # O Cérebro: Automações YAML
-│       ├── python-ci.yml       # Fase 1: Legado — aprendizado de sintaxe YAML
-│       ├── typescript-ci.yml   # Fase 2: Migração de stack e lógica de tipos
-│       ├── cypress-ci.yml      # Fase 3: Qualidade e testes E2E
-│       └── docker-ci.yml       # Fase 4: Entrega Contínua — Build & Push para GHCR
+│   └── workflows/              # The Brain: YAML Automations
+│       ├── python-ci.yml       # Phase 1: Legacy — learning YAML syntax
+│       ├── typescript-ci.yml   # Phase 2: Stack migration and type logic
+│       ├── cypress-ci.yml      # Phase 3: Quality and E2E tests
+│       └── docker-ci.yml       # Phase 4: Continuous Delivery — Build & Push to GHCR
 ├── cypress/
 │   └── e2e/
-│       └── soma.cy.ts          # Testes E2E com Cypress
-├── soma.py                     # Função legada em Python
-├── test_soma.py                # Testes unitários em Python
-├── soma.ts                     # Função migrada para TypeScript
-├── soma.test.ts                # Testes unitários em TypeScript (sem framework)
-├── monitor.ts                  # Aplicação principal — monitor de URLs
-├── Dockerfile                  # A "receita" do container
-├── tsconfig.json               # Configuração do TypeScript
-├── package.json                # Dependências e scripts do projeto
-└── yarn.lock                   # Lockfile de dependências
+│       └── soma.cy.ts          # E2E tests with Cypress
+├── soma.py                     # Legacy function in Python
+├── test_soma.py                # Unit tests in Python
+├── soma.ts                     # Function migrated to TypeScript
+├── soma.test.ts                # Unit tests in TypeScript (no framework)
+├── monitor.ts                  # Main application — URL monitor
+├── Dockerfile                  # The container "recipe"
+├── tsconfig.json               # TypeScript configuration
+├── package.json                # Dependencies and project scripts
+└── .gitignore                  # Files ignored by Git
 ```
 
 ---
 
-> **Por que não usar Docker Desktop?** O Docker Desktop tem uma camada de virtualização extra no Windows que pode causar lentidão e conflitos com o WSL 2. A Engine pura roda diretamente no Linux, mais rápida e estável. Mas fica a seu critério
+## Let's get started!!
 
----
+### Step 1: Creating the Repository
 
-### Passo 1: Criando o Repositório
-
-Crie um repositório no GitHub com o nome de sua escolha. Em seguida, clone e abra no VSCode:
+Create a repository on GitHub with a name of your choice. Then clone and open it in VSCode:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO
-cd NOME_DO_REPOSITORIO
+git clone https://github.com/YOUR_USER/REPOSITORY_NAME
+cd REPOSITORY_NAME
 code .
 ```
 
-> O comando `code .` abre o VSCode conectado ao WSL automaticamente.
+> The `code .` command opens VSCode connected to WSL automatically.
 
 ---
 
-### Passo 2: Entendendo o YAML antes de escrever
+### Step 2: Understanding YAML Before Writing
 
-Antes de criar qualquer workflow, é fundamental entender a linguagem de configuração que o GitHub Actions usa.
+Before creating any workflow, it is essential to understand the configuration language GitHub Actions uses.
 
-**YAML é baseado em hierarquia por indentação — sempre 2 espaços, nunca tabs.**
+**YAML is based on indentation hierarchy — always 2 spaces, never tabs.**
 
 ```yaml
-# Chave: valor simples
-nome: Meu Workflow
+# Key: simple value
+name: My Workflow
 
-# Hierarquia — filho fica 2 espaços à frente do pai
+# Hierarchy — child is 2 spaces ahead of parent
 jobs:
-  meu-job:
+  my-job:
     runs-on: ubuntu-latest
 
-# Lista com traço
+# List with dash
 branches:
   - main
   - develop
 ```
 
-**Estrutura padrão de qualquer workflow do GitHub Actions:**
+**Standard structure of any GitHub Actions workflow:**
 
 ```yaml
-name: # Nome que aparece na aba Actions
+name: # Name shown in the Actions tab
 
-on: # Gatilho — quando o workflow dispara
+on: # Trigger — when the workflow fires
 
 jobs:
-  nome-do-job:          # Identificador do job
-    runs-on: ubuntu-latest  # Máquina virtual onde roda
+  job-name:                   # Job identifier
+    runs-on: ubuntu-latest    # Virtual machine to run on
 
     steps:
-      - name: Nome do step   # Descrição do passo
-        uses: action@versao  # Usa uma action pronta do marketplace
-        # OU
-        run: comando          # Executa um comando de terminal
+      - name: Step name       # Step description
+        uses: action@version  # Uses a ready-made marketplace action
+        # OR
+        run: command          # Runs a terminal command
 ```
 
-**Os componentes principais:**
-- **`name`** — nome do workflow visível na aba Actions
-- **`on`** — define o gatilho (`push`, `pull_request`, `schedule`)
-- **`jobs`** — agrupa os trabalhos a executar
-- **`runs-on`** — SO da máquina virtual. Sempre usamos `ubuntu-latest`
-- **`steps`** — lista de passos sequenciais dentro de um job
-- **`uses`** — chama uma action reutilizável do marketplace
-- **`run`** — executa um comando diretamente no terminal
+**Main components:**
+- **`name`** — workflow name visible in the Actions tab
+- **`on`** — defines the trigger (`push`, `pull_request`, `schedule`)
+- **`jobs`** — groups the work to be executed
+- **`runs-on`** — VM operating system. We always use `ubuntu-latest`
+- **`steps`** — sequential list of steps within a job
+- **`uses`** — calls a reusable action from the marketplace
+- **`run`** — executes a command directly in the terminal
 
 ---
 
-### Passo 3: Fase 1 — Pipeline Python com pytest
+### Step 3: Phase 1 — Python Pipeline with pytest
 
-O primeiro pipeline. Começa com Python porque a lógica é simples, permitindo focar 100% na estrutura do workflow.
+The first pipeline. Starts with Python because the logic is simple, allowing 100% focus on the workflow structure.
 
-**Crie a estrutura de arquivos:**
+**Create the file structure:**
 ```bash
 mkdir -p .github/workflows
 touch .github/workflows/python-ci.yml
@@ -160,13 +158,13 @@ touch soma.py
 touch test_soma.py
 ```
 
-**`soma.py`** — função que será testada:
+**`soma.py`** — function to be tested:
 ```python
 def soma(a, b):
     return a + b
 ```
 
-**`test_soma.py`** — testes da função:
+**`test_soma.py`** — function tests:
 ```python
 from soma import soma
 
@@ -176,7 +174,7 @@ def test_soma():
     assert soma(-1, 1) == 0
 ```
 
-**`.github/workflows/python-ci.yml`** — o pipeline:
+**`.github/workflows/python-ci.yml`** — the pipeline:
 ```yaml
 name: Python CI
 
@@ -208,46 +206,46 @@ jobs:
         run: pytest
 ```
 
-**O que cada step faz:**
-- **`actions/checkout@v4`** — baixa o código do repositório para a máquina virtual do Actions
-- **`actions/setup-python@v5`** — instala o Python na versão especificada
-- **`pip install pytest`** — instala o framework de testes
-- **`pytest`** — detecta automaticamente todos os arquivos que começam com `test_` e os executa
+**What each step does:**
+- **`actions/checkout@v4`** — downloads the repository code to the Actions virtual machine
+- **`actions/setup-python@v5`** — installs Python in the specified version
+- **`pip install pytest`** — installs the testing framework
+- **`pytest`** — automatically detects all files starting with `test_` and runs them
 
-**Suba e veja o pipeline rodar:**
+**Push and watch the pipeline run:**
 ```bash
 git add .
 git commit -m "feat: add python ci pipeline"
 git push origin main
 ```
 
-Acesse a aba **Actions** no GitHub e veja o workflow executar automaticamente.
+Go to the **Actions** tab on GitHub and watch the workflow execute automatically.
 
 ---
 
-### Passo 4: Fase 2 — Migrando para TypeScript
+### Step 4: Phase 2 — Migrating to TypeScript
 
-Mesma lógica do pipeline anterior, linguagem diferente. Isso demonstra que o GitHub Actions é **agnóstico de linguagem** — a estrutura do workflow é sempre a mesma.
+Same logic as the previous pipeline, different language. This demonstrates that GitHub Actions is **language-agnostic** — the workflow structure is always the same.
 
-**Inicialize o projeto Node.js:**
+**Initialize the Node.js project:**
 ```bash
 yarn init -y
 yarn add -D typescript ts-node @types/node
 yarn tsc --init
 ```
 
-> **Importante:** No `tsconfig.json` gerado, localize a linha `"verbatimModuleSyntax"` e mude para `false`. Isso evita conflito entre os sistemas de módulos CommonJS e ESModule.
+> **Important:** In the generated `tsconfig.json`, find the line `"verbatimModuleSyntax"` and change it to `false`. This prevents conflict between the CommonJS and ESModule module systems.
 
-**`soma.ts`** — função tipada:
+**`soma.ts`** — typed function:
 ```typescript
 export function soma(a: number, b: number): number {
   return a + b;
 }
 ```
 
-> **Por que TypeScript?** O `: number` nos parâmetros garante que a função só aceita números. Tentar passar uma string causa erro antes mesmo de executar o código.
+> **Why TypeScript?** The `: number` on the parameters ensures the function only accepts numbers. Trying to pass a string causes an error before the code even executes.
 
-**`soma.test.ts`** — testes sem framework externo:
+**`soma.test.ts`** — tests without external framework:
 ```typescript
 import { soma } from './soma';
 
@@ -255,21 +253,21 @@ function assert(condition: boolean, message: string) {
   if (!condition) throw new Error(message);
 }
 
-assert(soma(2, 3) === 5, 'Erro: 2 + 3 deveria ser 5');
-assert(soma(0, 0) === 0, 'Erro: 0 + 0 deveria ser 0');
-assert(soma(-1, 1) === 0, 'Erro: -1 + 1 deveria ser 0');
+assert(soma(2, 3) === 5, 'Error: 2 + 3 should be 5');
+assert(soma(0, 0) === 0, 'Error: 0 + 0 should be 0');
+assert(soma(-1, 1) === 0, 'Error: -1 + 1 should be 0');
 
-console.log('Todos os testes passaram!');
+console.log('All tests passed!');
 ```
 
-> **Por que `assert` manual?** Para não adicionar dependências desnecessárias neste momento. O Cypress, que vem a seguir, já tem seu próprio sistema de assertions.
+> **Why manual `assert`?** To avoid adding unnecessary dependencies at this stage. Cypress, which comes next, already has its own assertion system.
 
-**Teste localmente antes de subir:**
+**Test locally before pushing:**
 ```bash
 npx ts-node soma.test.ts
 ```
 
-**`.github/workflows/typescript-ci.yml`** — o pipeline:
+**`.github/workflows/typescript-ci.yml`** — the pipeline:
 ```yaml
 name: TypeScript CI
 
@@ -301,7 +299,7 @@ jobs:
         run: npx ts-node soma.test.ts
 ```
 
-> **Diferença do pipeline Python:** Trocamos `actions/setup-python` por `actions/setup-node`, e `pip install pytest` por `yarn install`. A estrutura é idêntica.
+> **Difference from the Python pipeline:** We swapped `actions/setup-python` for `actions/setup-node`, and `pip install pytest` for `yarn install`. The structure is identical.
 
 ```bash
 git add .
@@ -311,22 +309,22 @@ git push origin main
 
 ---
 
-### Passo 5: Fase 3 — Testes E2E com Cypress
+### Step 5: Phase 3 — E2E Tests with Cypress
 
-Cypress é um framework de testes end-to-end — ele substitui os testes manuais escritos anteriormente por uma solução profissional e padronizada, usada em empresas do mundo todo.
+Cypress is an end-to-end testing framework — it replaces the manually written tests with a professional, standardized solution used by companies worldwide.
 
-**O que diferencia testes unitários de E2E:**
-- **Unitário** — testa uma função isolada. Ex: `soma(2, 3) === 5`
-- **E2E** — simula o fluxo completo de um usuário. Ex: abre o browser, clica em login, preenche formulário, verifica redirecionamento
+**What differentiates unit tests from E2E:**
+- **Unit** — tests an isolated function. Ex: `soma(2, 3) === 5`
+- **E2E** — simulates a complete user flow. Ex: opens browser, clicks login, fills form, verifies redirect
 
-**Instale o Cypress:**
+**Install Cypress:**
 ```bash
 yarn add -D cypress
 ```
 
-**Dependências de sistema necessárias no WSL 2:**
+**System dependencies required on WSL 2:**
 
-O Cypress precisa de bibliotecas gráficas para renderizar o navegador no Linux. Sem elas, você verá o erro `libnspr4.so: cannot open shared object file`.
+Cypress needs graphics libraries to render the browser on Linux. Without them, you will see the error `libnspr4.so: cannot open shared object file`.
 
 ```bash
 sudo apt-get install -y libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 \
@@ -334,47 +332,47 @@ sudo apt-get install -y libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 \
   libxfixes3 libxrandr2 libgbm1 libasound2t64
 ```
 
-**Inicialize o Cypress e crie a estrutura:**
+**Initialize Cypress and create the structure:**
 ```bash
 yarn cypress open
 ```
 
-Na interface que abrir, selecione **E2E Testing** → **Continue** → escolha o browser → **Start E2E Testing** → **Create new spec** e nomeie como `cypress/e2e/soma.cy.ts`.
+In the interface that opens, select **E2E Testing** → **Continue** → choose browser → **Start E2E Testing** → **Create new spec** and name it `cypress/e2e/soma.cy.ts`.
 
-Feche o Cypress com `Ctrl + C` no terminal.
+Close Cypress with `Ctrl + C` in the terminal.
 
-**`cypress/e2e/soma.cy.ts`** — substitua o conteúdo gerado por:
+**`cypress/e2e/soma.cy.ts`** — replace the generated content with:
 ```typescript
 import { soma } from '../../soma';
 
-describe('Teste da função soma', () => {
-  it('deve somar 2 + 3 e retornar 5', () => {
+describe('soma function tests', () => {
+  it('should return 5 when summing 2 + 3', () => {
     expect(soma(2, 3)).to.equal(5);
   });
 
-  it('deve somar 0 + 0 e retornar 0', () => {
+  it('should return 0 when summing 0 + 0', () => {
     expect(soma(0, 0)).to.equal(0);
   });
 
-  it('deve somar -1 + 1 e retornar 0', () => {
+  it('should return 0 when summing -1 + 1', () => {
     expect(soma(-1, 1)).to.equal(0);
   });
 });
 ```
 
-**Padrão de escrita dos testes:**
-- **`describe`** — agrupa testes por contexto (nome da função ou módulo)
-- **`it`** — define um caso de teste. Sempre começa com "deve" (ou "should" em inglês)
-- **`expect().to.equal()`** — o assert do Cypress. Muito mais legível que escrever na mão
+**Test writing pattern:**
+- **`describe`** — groups tests by context (function or module name)
+- **`it`** — defines a test case. Always starts with "should"
+- **`expect().to.equal()`** — Cypress assertion. Much more readable than writing by hand
 
-**Teste localmente em modo headless (sem interface gráfica):**
+**Test locally in headless mode:**
 ```bash
 yarn cypress run
 ```
 
 > **`cypress run` vs `cypress open`:**
-> - `cypress open` — abre a interface visual, ideal para desenvolvimento
-> - `cypress run` — roda no terminal sem abrir o browser, ideal para CI/CD
+> - `cypress open` — opens the visual interface, ideal for development
+> - `cypress run` — runs in the terminal without opening the browser, ideal for CI/CD
 
 **`.github/workflows/cypress-ci.yml`**:
 ```yaml
@@ -416,72 +414,72 @@ git push origin main
 
 ---
 
-### Passo 6: A Aplicação — monitor.ts
+### Step 6: The Application — monitor.ts
 
-Antes de containerizar, criamos a aplicação que será empacotada no Docker. Um script TypeScript que verifica se URLs estão online ou offline — uso real no dia a dia de DevOps.
+Before containerizing, we created the application that will be packaged in Docker. A TypeScript script that checks if URLs are online or offline — real-world use in DevOps day-to-day.
 
 **`monitor.ts`:**
 ```typescript
 interface Site {
-  nome: string;
+  name: string;
   url: string;
 }
 
 const sites: Site[] = [
-  { nome: 'Google', url: 'https://www.google.com' },
-  { nome: 'GitHub', url: 'https://www.github.com' },
-  { nome: 'Site Offline', url: 'https://www.sitequenaoexiste123456.com' },
+  { name: 'Google', url: 'https://www.google.com' },
+  { name: 'GitHub', url: 'https://www.github.com' },
+  { name: 'Offline Site', url: 'https://www.sitethatdoesnotexist123456.com' },
 ];
 
-async function verificarSite(site: Site): Promise<void> {
+async function checkSite(site: Site): Promise<void> {
   try {
     await fetch(site.url);
-    console.log(`✅ ${site.nome} está online`);
+    console.log(`✅ ${site.name} is online`);
   } catch {
-    console.log(`❌ ${site.nome} está offline`);
+    console.log(`❌ ${site.name} is offline`);
   }
 }
 
-async function monitorar(): Promise<void> {
-  console.log('🔍 Verificando sites...\n');
+async function monitor(): Promise<void> {
+  console.log('🔍 Checking sites...\n');
 
   for (const site of sites) {
-    await verificarSite(site);
+    await checkSite(site);
   }
 
-  console.log('\n✅ Monitoramento concluído!');
+  console.log('\n✅ Monitoring complete!');
 }
 
-monitorar();
+monitor();
 ```
 
-**Conceitos TypeScript aplicados aqui:**
-- **`interface`** — define a estrutura de um objeto. Todo `Site` deve ter `nome` e `url` do tipo `string`
-- **`Site[]`** — array tipado. A lista só aceita objetos que seguem a interface `Site`
-- **`async/await`** — funções que podem demorar para terminar (como requisições HTTP) sem travar o programa
-- **`Promise<void>`** — promessa de que algo vai acontecer no futuro. `void` significa que não retorna valor
-- **`try/catch`** — tenta executar o código. Se algo falhar, cai no `catch` em vez de travar
-- **Template strings** (acento grave) — permite inserir variáveis no texto com `${}`
+**TypeScript concepts applied here:**
+- **`interface`** — defines the structure of an object. Every `Site` must have `name` and `url` of type `string`
+- **`Site[]`** — typed array. The list only accepts objects that follow the `Site` interface
+- **`async/await`** — functions that may take time to complete without blocking the program
+- **`Promise<void>`** — promise that something will happen in the future. `void` means no return value
+- **`try/catch`** — tries to execute the code. If something fails, falls into `catch` instead of crashing
+- **Template strings** (backtick) — allows inserting variables into text with `${}`
 
-**Teste localmente:**
+**Test locally:**
 ```bash
 npx ts-node monitor.ts
 ```
 
 ---
 
-### Passo 7: Fase 4 — Docker e Containerização
+### Step 7: Phase 4 — Docker and Containerization
 
-Docker empacota a aplicação junto com tudo que ela precisa para rodar — SO, dependências e configurações — dentro de um container. O comportamento é sempre o mesmo em qualquer ambiente.
+Docker packages the application along with everything it needs to run — OS, dependencies, and configurations — inside a container. The behavior is always the same in any environment.
 
-**Os três conceitos fundamentais:**
-| Conceito | Analogia | Descrição |
+**The three fundamental concepts:**
+| Concept | Analogy | Description |
 |---|---|---|
-| **Dockerfile** | Receita de bolo | O arquivo com as instruções de como montar o container |
-| **Image** | Bolo pronto | O resultado do build — empacotado e pronto para distribuir |
-| **Container** | Fatia servida | A image rodando — a instância viva da aplicação |
+| **Dockerfile** | Cake recipe | The file with instructions on how to build the container |
+| **Image** | Finished cake | The build result — packaged and ready to distribute |
+| **Container** | Served slice | The image running — the live instance of the application |
 
-**Crie o `Dockerfile` na raiz do projeto:**
+**Create the `Dockerfile` at the project root:**
 ```dockerfile
 FROM node:20-alpine
 
@@ -496,39 +494,28 @@ COPY . .
 CMD ["npx", "ts-node", "monitor.ts"]
 ```
 
-**Explicação linha por linha:**
-- **`FROM node:20-alpine`** — usa a image oficial do Node 20 na versão `alpine` (versão mínima do Linux, mais leve)
-- **`WORKDIR /app`** — define o diretório de trabalho dentro do container
-- **`COPY package.json yarn.lock ./`** — copia os arquivos de dependências **antes** do código
-- **`RUN yarn install`** — instala as dependências dentro do container
-- **`COPY . .`** — copia todo o restante do código
-- **`CMD`** — comando executado quando o container inicia
+**Line-by-line explanation:**
+- **`FROM node:20-alpine`** — uses the official Node 20 image in the `alpine` version (minimal Linux, lighter)
+- **`WORKDIR /app`** — sets the working directory inside the container
+- **`COPY package.json yarn.lock ./`** — copies dependency files **before** the code
+- **`RUN yarn install`** — installs dependencies inside the container
+- **`COPY . .`** — copies all remaining code
+- **`CMD`** — command executed when the container starts
 
-> **Por que copiar `package.json` antes do `COPY . .`?**
-> O Docker tem um sistema de **cache por camadas** — cada linha do Dockerfile é uma camada armazenada em cache. Se você mudar só o código do `monitor.ts`, o Docker percebe que `package.json` não mudou e **pula o `yarn install`**, tornando o build muito mais rápido.
+> **Why copy `package.json` before `COPY . .`?**
+> Docker has a **layer caching system** — each Dockerfile line is a cached layer. If you only change `monitor.ts`, Docker sees that `package.json` hasn't changed and **skips `yarn install`**, making the build much faster.
 
-**Comandos úteis do Docker:**
+**Useful Docker commands:**
 ```bash
-# Builda a image com o nome monitor-app
-docker build -t monitor-app .
-
-# Roda a image em um container
-docker run monitor-app
-
-# Lista as images locais
-docker images
-
-# Lista todos os containers (incluindo parados)
-docker ps -a
-
-# Remove um container
-docker rm CONTAINER_ID
-
-# Remove uma image
-docker rmi monitor-app
+docker build -t monitor-app .   # Build the image
+docker run monitor-app          # Run the container
+docker images                   # List local images
+docker ps -a                    # List all containers
+docker rm CONTAINER_ID          # Remove a container
+docker rmi monitor-app          # Remove an image
 ```
 
-**`.github/workflows/docker-ci.yml`** — pipeline de build:
+**`.github/workflows/docker-ci.yml`** — build pipeline:
 ```yaml
 name: Docker CI
 
@@ -574,30 +561,27 @@ jobs:
 
 ---
 
-### Passo 8: Secrets — Credenciais Seguras no CI
+### Step 8: Secrets — Secure Credentials in CI
 
-Secrets são variáveis sensíveis armazenadas de forma criptografada no repositório. Elas nunca aparecem no código — o GitHub Actions as injeta automaticamente no pipeline na hora da execução.
+Secrets are sensitive variables stored in encrypted form in the repository. They never appear in the code — GitHub Actions automatically injects them into the pipeline at execution time.
 
-**Por que secrets são essenciais:**
-Sem secrets, você precisaria colocar seu token diretamente no YAML — qualquer pessoa com acesso ao repositório poderia ver suas credenciais. Com secrets, o valor é criptografado e nunca exposto.
-
-**Como criar um Personal Access Token (PAT) no GitHub:**
-1. Acesse **github.com/settings/tokens**
-2. Clique em **Generate new token (classic)**
-3. Preencha:
+**How to create a Personal Access Token (PAT) on GitHub:**
+1. Go to **github.com/settings/tokens**
+2. Click **Generate new token (classic)**
+3. Fill in:
    - **Note:** `ghcr-token`
    - **Expiration:** 90 days
-   - **Scopes:** marque `write:packages`
-4. Clique em **Generate token** e **copie imediatamente** — ele só aparece uma vez
+   - **Scopes:** check `write:packages`
+4. Click **Generate token** and **copy immediately** — it only appears once
 
-**Como adicionar secrets no repositório:**
-1. Acesse **Settings → Secrets and variables → Actions**
-2. Clique em **New repository secret**
-3. Crie dois secrets:
-   - `GHCR_USERNAME` — seu nome de usuário do GitHub
-   - `GHCR_TOKEN` — o token gerado no passo anterior
+**How to add secrets to the repository:**
+1. Go to **Settings → Secrets and variables → Actions**
+2. Click **New repository secret**
+3. Create two secrets:
+   - `GHCR_USERNAME` — your GitHub username
+   - `GHCR_TOKEN` — the token generated above
 
-**Como usar secrets no workflow:**
+**How to use secrets in the workflow:**
 ```yaml
 username: ${{ secrets.GHCR_USERNAME }}
 password: ${{ secrets.GHCR_TOKEN }}
@@ -605,9 +589,9 @@ password: ${{ secrets.GHCR_TOKEN }}
 
 ---
 
-### Passo 9: GHCR — Publicando a Imagem
+### Step 9: GHCR — Publishing the Image
 
-O GHCR (GitHub Container Registry) é o "almoxarifado" de imagens Docker integrado ao GitHub. Após configurar os secrets, o pipeline do Passo 8 já está pronto para publicar automaticamente.
+GHCR (GitHub Container Registry) is the Docker image warehouse integrated with GitHub. After configuring the secrets, the pipeline from Step 7 is already ready to publish automatically.
 
 ```bash
 git add .
@@ -615,96 +599,93 @@ git commit -m "feat: add docker ci pipeline with ghcr push"
 git push origin main
 ```
 
-Após o push, acesse seu perfil no GitHub → **Packages** para ver a imagem publicada.
+After pushing, go to your GitHub profile → **Packages** to see the published image.
 
-**Para tornar a imagem pública** (necessário para o deploy no Railway sem configuração extra):
-- Vá em **Packages → monitor-app → Package settings**
-- Altere a visibilidade para **Public**
+**To make the image public** (required for Railway deployment without extra configuration):
+- Go to **Packages → monitor-app → Package settings**
+- Change visibility to **Public**
 
 ---
 
-### Passo 10: Versionamento com SemVer
+### Step 10: Versioning with SemVer
 
-O `latest` é conveniente mas perigoso em produção — ele sempre muda. Com tags versionadas, você tem controle total sobre qual versão está rodando em cada ambiente.
+`latest` is convenient but dangerous in production — it always changes. With versioned tags, you have full control over which version is running in each environment.
 
-**O padrão SemVer:**
+**The SemVer pattern:**
 ```
 v1.2.3
-  │ │ └── PATCH — correção de bug (não quebra nada)
-  │ └──── MINOR — nova funcionalidade (não quebra nada)
-  └────── MAJOR — mudança que quebra compatibilidade
+  │ │ └── PATCH — bug fix (nothing breaks)
+  │ └──── MINOR — new feature (nothing breaks)
+  └────── MAJOR — breaking change
 ```
 
-**Como criar e publicar uma tag:**
+**How to create and publish a tag:**
 ```bash
 git tag v1.0.0
 git push origin v1.0.0
 ```
 
-**O `docker/metadata-action` detecta automaticamente:**
-- Push na `main` → publica como `latest`
-- Tag `v1.0.1` → publica como `v1.0.1` e `latest`
+**The `docker/metadata-action` detects automatically:**
+- Push to `main` → publishes as `latest`
+- Tag `v1.0.1` → publishes as `v1.0.1` and `latest`
 
-> **Regra de ouro:** Em produção, sempre use tags específicas (`v1.0.1`), nunca `latest`. Tags são imutáveis — `v1.0.1` sempre será a mesma imagem. `latest` muda a cada push.
-
----
-
-### Passo 11: Deploy no Railway
-
-Deploy é o processo de pegar a imagem publicada no GHCR e colocá-la para rodar em um servidor na nuvem.
-
-**O ciclo completo:**
-```
-Push na main ou tag de versão
-           ↓
-GitHub Actions dispara automaticamente
-           ↓
-Roda todos os testes (Python, TypeScript, Cypress)
-           ↓
-Builda a imagem Docker
-           ↓
-Publica no GHCR com a tag correta
-           ↓
-Railway faz o deploy da imagem
-           ↓
-Aplicação rodando na nuvem
-```
-
-**Como fazer o deploy no Railway:**
-1. Acesse [railway.app](https://railway.app) e crie uma conta com **Login with GitHub**
-2. Clique em **New Project → Docker Image**
-3. Digite o endereço da sua imagem: `ghcr.io/SEU_USUARIO/monitor-app:latest`
-4. O Railway fará o deploy automaticamente
-
-> **Railway é PaaS vs VPS:** No Railway você não gerencia o servidor — só entrega a imagem e ele cuida de rodar, escalar e manter disponível. Em uma VPS você teria acesso e responsabilidade total sobre o servidor.
+> **Golden rule:** In production, always use specific tags (`v1.0.1`), never `latest`. Tags are immutable — `v1.0.1` will always be the same image. `latest` changes with every push.
 
 ---
 
-## 🐛 Memorial Técnico — Erros e Soluções
+### Step 11: Deploy on Railway
 
-Esta seção documenta os principais obstáculos encontrados durante o projeto. Erros são parte do aprendizado — documentá-los é o que transforma um iniciante em um profissional.
+Deploy is the process of taking the image published in GHCR and putting it to run on a cloud server.
 
-### Erro: `actoins/setup-node` — Typo no YAML
+**The complete cycle:**
+```
+Push to main or version tag
+           ↓
+GitHub Actions fires automatically
+           ↓
+Runs all tests (Python, TypeScript, Cypress)
+           ↓
+Builds the Docker image
+           ↓
+Publishes to GHCR with correct tag
+           ↓
+Railway deploys the image
+           ↓
+Application running in the cloud
+```
 
-**Problema:** Um erro de digitação no nome da action travou o pipeline com `Unable to resolve action`.
+**How to deploy on Railway:**
+1. Go to [railway.app](https://railway.app) and create an account with **Login with GitHub**
+2. Click **New Project → Docker Image**
+3. Enter your image address: `ghcr.io/YOUR_USER/monitor-app:latest`
+4. Railway will deploy automatically
 
-**Lição:** No DevOps, a sintaxe é lei. O YAML é implacável com erros.
+> **Railway PaaS vs VPS:** On Railway you don't manage the server — just deliver the image and it handles running, scaling, and keeping it available. On a VPS you would have full access and responsibility over the server.
 
-**Solução:**
+---
+
+## 🐛 Technical Memorial — Errors and Solutions
+
+### Error: `actoins/setup-node` — Typo in YAML
+
+**Problem:** A typo in the action name crashed the pipeline with `Unable to resolve action`.
+
+**Lesson:** In DevOps, syntax is law. YAML is unforgiving with errors.
+
+**Solution:**
 ```bash
 git commit -m "fix: actoins in typescript-ci.yml to actions"
 ```
-Usar o prefixo `fix:` mantém o histórico de commits profissional e semântico.
 
 ---
 
-### Erro: `libnspr4.so: cannot open shared object file` — Cypress no WSL
+### Error: `libnspr4.so: cannot open shared object file` — Cypress on WSL
 
-**Problema:** O Cypress falhou ao iniciar porque o Ubuntu do WSL é minimalista e não possui drivers gráficos por padrão.
+**Problem:** Cypress failed to start because WSL's Ubuntu doesn't have graphics drivers by default.
 
-**Lição:** Ferramentas visuais precisam de bibliotecas de sistema específicas no Linux.
+**Lesson:** Visual tools need specific system libraries on Linux.
 
-**Solução:**
+**Solution:**
 ```bash
 sudo apt-get install -y libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 \
   libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 \
@@ -713,59 +694,61 @@ sudo apt-get install -y libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 \
 
 ---
 
-### Erro: `verbatimModuleSyntax` — Conflito de módulos no TypeScript
+### Error: `verbatimModuleSyntax` — Module conflict in TypeScript
 
-**Problema:** O `tsconfig.json` gerado automaticamente tinha `verbatimModuleSyntax: true`, que conflita com o sistema de módulos CommonJS do Node.js ao usar `export`.
+**Problem:** The auto-generated `tsconfig.json` had `verbatimModuleSyntax: true`, conflicting with Node.js's CommonJS module system.
 
-**Lição:** O TypeScript tem configurações que afetam como o código é interpretado. Entender o `tsconfig.json` é essencial.
+**Lesson:** Understanding `tsconfig.json` is essential.
 
-**Solução:** No `tsconfig.json`, mudar:
+**Solution:** In `tsconfig.json`, change:
 ```json
 "verbatimModuleSyntax": false
 ```
 
 ---
 
-### Erro: Deploy falhou no Railway — Imagem privada
+### Error: Railway deployment failed — Private image
 
-**Problema:** O Railway não conseguiu acessar a imagem no GHCR porque ela estava como privada.
+**Problem:** Railway couldn't access the image on GHCR because it was set to private.
 
-**Lição:** Registries privados exigem credenciais para acesso externo.
+**Lesson:** Private registries require credentials for external access.
 
-**Solução:** Tornar a imagem pública nas configurações do Package no GitHub, ou configurar as credenciais do GHCR como variáveis no Railway.
-
----
-
-## 🎤 Roteiro de Demonstração
-
-Para quem quiser apresentar este projeto, aqui está um roteiro de 4 minutos:
-
-**Minuto 1 — A Base**
-> "Comecei estabelecendo um ambiente Linux dentro do Windows com WSL 2. Isso elimina o problema clássico de 'funciona na minha máquina' — meu ambiente de desenvolvimento é idêntico ao servidor de produção."
-
-**Minuto 2 — A Jornada pelos Pipelines**
-> "Criei quatro pipelines progressivos: Python com pytest, TypeScript com ts-node, Cypress para testes E2E, e Docker para containerização. Isso prova que a lógica de CI/CD é agnóstica de linguagem — a estrutura do workflow é sempre a mesma."
-
-**Minuto 3 — A Aplicação e o Container**
-> Rode `docker run monitor-app` ao vivo.
-> "O `monitor-app` verifica se URLs estão online ou offline. Ele roda dentro de um container Docker — se o servidor tiver Docker instalado, ele não precisa de Node ou Yarn. O container transporta tudo."
-
-**Minuto 4 — O Ciclo Completo**
-> Mostre a aba Actions no GitHub e o Package publicado no GHCR.
-> "O ciclo completo: push na main → testes rodam automaticamente → imagem é buildada e publicada no GHCR → Railway faz o deploy. Saímos de um script simples para uma infraestrutura automatizada de ponta a ponta."
+**Solution:** Make the image public in GitHub Package settings.
 
 ---
 
-## 📖 Referências
+## 🎤 Demo Script
 
-- [GitHub Actions Documentation](https://docs.github.com/pt/actions)
+**Minute 1 — The Foundation**
+> "I started by establishing a Linux environment inside Windows with WSL 2. This eliminates the classic 'works on my machine' problem — my development environment is identical to the production server."
+
+**Minute 2 — The Pipeline Journey**
+> "I created four progressive pipelines: Python with pytest, TypeScript with ts-node, Cypress for E2E tests, and Docker for containerization. This proves that CI/CD logic is language-agnostic — the workflow structure is always the same."
+
+**Minute 3 — The Application and the Container**
+> Run `docker run monitor-app` live.
+> "The `monitor-app` checks if URLs are online or offline. It runs inside a Docker container — if the server has Docker installed, it doesn't need Node or Yarn. The container transports everything."
+
+**Minute 4 — The Full Cycle**
+> Show the Actions tab on GitHub and the published Package on GHCR.
+> "The complete cycle: push to main → tests run automatically → image is built and published to GHCR → Railway deploys. We went from a simple script to an end-to-end automated infrastructure."
+
+---
+
+## 📖 References
+
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [GitHub Skills — Hello GitHub Actions](https://github.com/skills/hello-github-actions)
 - [GitHub Skills — Test with Actions](https://github.com/skills/test-with-actions)
 - [Docker Documentation](https://docs.docker.com)
 - [Cypress Documentation](https://docs.cypress.io)
 - [Railway Documentation](https://docs.railway.app)
-- [Semantic Versioning](https://semver.org/lang/pt-BR/)
+- [Semantic Versioning](https://semver.org)
 
 ---
 
-*Este repositório foi construído como laboratório de aprendizado durante estágio em DevOps, com mentoria via Claude.AI (Anthropic). Cada commit conta uma história.*
+📄 [Versão em Português](./README.md)
+
+---
+
+*This repository was built as a learning lab during a DevOps internship, mentored via Claude.AI (Anthropic). Every commit tells a story.*
