@@ -6,7 +6,7 @@
 
 ---
 
-> 📄 [Portuguese version available here](./README.md)
+> 📄 [Portuguese version available here](./README.pt-br.md)
 
 ---
 
