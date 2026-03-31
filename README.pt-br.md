@@ -6,6 +6,10 @@
 
 ---
 
+> > 📄 [Versão em inglês disponível aqui](./README.md)
+
+---
+
 ## 📖 Sobre este repositório
 
 Este repositório não é apenas um projeto técnico — é uma **jornada documentada em código**. Cada arquivo, pipeline e configuração representa um conceito aprendido e aplicado na prática, partindo do absoluto zero em automação até a construção de uma aplicação monitorada, containerizada e com deploy automatizado.
