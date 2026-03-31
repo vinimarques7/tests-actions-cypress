@@ -1,7 +1,9 @@
 # 🚀 DevOps Journey: Full Cycle CI/CD with AI Mentoring
 
 > **Author:** Vinícius Marques
+> 
 > **Repository:** `devops-cicd-journey`
+> 
 > **Goal:** Technical and evolutionary record of a journey from zero to full CI/CD, using AI as a learning mentor.
 
 ---
