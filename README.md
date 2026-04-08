@@ -570,7 +570,7 @@ jobs:
 Secrets are sensitive variables stored in encrypted form in the repository. They never appear in the code — GitHub Actions automatically injects them into the pipeline at execution time.
 
 **How to create a Personal Access Token (PAT) on GitHub:**
-1. Go to **github.com/settings/tokens**
+1. Go to **github.com/settings/developer settings/tokens**
 2. Click **Generate new token (classic)**
 3. Fill in:
    - **Note:** `ghcr-token`
