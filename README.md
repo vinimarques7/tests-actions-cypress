@@ -721,24 +721,6 @@ sudo apt-get install -y libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 \
 
 ---
 
-## 🎤 Demo Script
-
-**Minute 1 — The Foundation**
-> "I started by establishing a Linux environment inside Windows with WSL 2. This eliminates the classic 'works on my machine' problem — my development environment is identical to the production server."
-
-**Minute 2 — The Pipeline Journey**
-> "I created four progressive pipelines: Python with pytest, TypeScript with ts-node, Cypress for E2E tests, and Docker for containerization. This proves that CI/CD logic is language-agnostic — the workflow structure is always the same."
-
-**Minute 3 — The Application and the Container**
-> Run `docker run monitor-app` live.
-> "The `monitor-app` checks if URLs are online or offline. It runs inside a Docker container — if the server has Docker installed, it doesn't need Node or Yarn. The container transports everything."
-
-**Minute 4 — The Full Cycle**
-> Show the Actions tab on GitHub and the published Package on GHCR.
-> "The complete cycle: push to main → tests run automatically → image is built and published to GHCR → Railway deploys. We went from a simple script to an end-to-end automated infrastructure."
-
----
-
 ## 📖 References
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
