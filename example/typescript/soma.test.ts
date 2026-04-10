@@ -1,4 +1,4 @@
-import { soma } from './soma';
+import { soma } from '../../soma';
 
 function assert(condition: boolean, message: string) {
     if (!condition) throw new Error(message);
