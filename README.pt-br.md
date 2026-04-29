@@ -14,11 +14,11 @@
 
 Este repositório não é apenas um projeto técnico — é uma **jornada documentada em código**. Cada arquivo, pipeline e configuração representa um conceito aprendido e aplicado na prática, partindo do absoluto zero em automação até a construção de uma aplicação monitorada, containerizada e com deploy automatizado.
 
-O projeto nasceu de um desafio proposto pelo meu líder: **migrar pipelines de testes legados de Python para TypeScript e depois substituí-los pelo Cypress**. A partir disso, o repositório evoluiu naturalmente para cobrir o ciclo completo de CI/CD.
+O projeto nasceu de um desafio proposto pelo meu líder: **migrar pipelines de testes legados de Python para TypeScript e depois substituí-los pelo Cypress como ferramenta para desenvolver ainda mais seu conhecimento em CI/CD e GitHub Actions**. A partir disso, o repositório evoluiu naturalmente para cobrir o ciclo completo de CI/CD.
 
 ### 🧠 Metodologia: IA Mentoring
 
-Este projeto foi guiado pela técnica de **IA Mentoring**. Utilizei o [Claude.AI](https://claude.ai) para simular um ambiente de mentoria real de estágio, com foco em **80% de prática e 20% de teoria**.
+Este projeto foi guiado pela técnica de **IA Mentoring**. Utilizei o [Claude.AI](https://claude.ai) para simular um ambiente de mentoria real de estágio.
 
 A diferença desta abordagem para simplesmente pedir código à IA está em quatro pilares:
 
@@ -97,8 +97,8 @@ Para seguir este tutorial, você pode criar um novo repositório do zero ou faze
 Assim que o seu repositório estiver pronto (novo ou forked), clone-o e abra-o no VSCode:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO
-cd NOME_DO_REPOSITORIO
+git clone https://github.com/vinimarques7/devops-cicd-journey.git
+cd devops-cicd-journey
 code .
 ```
 
